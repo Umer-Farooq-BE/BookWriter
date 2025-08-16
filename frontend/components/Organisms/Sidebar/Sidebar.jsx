@@ -111,6 +111,10 @@ export default function Sidebar() {
     if (!isMobile) {
       saveSidebarPreferences(newCollapsed);
     }
+      // Dispatch custom event for immediate layout update
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('sidebarToggled', { detail: { collapsed: newCollapsed } }));
+      }
   };
 
   useEffect(() => {

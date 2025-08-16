@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import '../stylesheets/style.css';
+import '../../../stylesheets/style.css';
 import { Icon } from '@iconify/react';
 
-import { askQuestion, saveTitle, createBook, generateChapterStream, loadChatState, saveChatState } from '../utils/api';
-import { formatChapterText } from '../utils/format';
+import { askQuestion, saveTitle, createBook, generateChapterStream, loadChatState, saveChatState } from '../../../utils/api';
+import { formatChapterText } from '../../../utils/format';
 
 const generateId = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 

@@ -2,8 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import Sidebar from './Organisms/Sidebar/Sidebar';
-import { STORAGE_KEYS } from '../constants/storage';
+import Sidebar from '../Sidebar/Sidebar';
+import { STORAGE_KEYS } from '../../../constants/storage';
 
 const ConditionalSidebar = () => {
   const pathname = usePathname();
