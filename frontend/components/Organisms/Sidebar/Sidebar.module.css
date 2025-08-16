@@ -358,6 +358,12 @@
     color: #0f01ff;
 }
 
+.activeBook {
+  background: #e0e7ff;
+  color: #0f01ff;
+}
+
+
 @media (max-width:1024px) {
     .bookItem {
         font-size: 0.8rem;

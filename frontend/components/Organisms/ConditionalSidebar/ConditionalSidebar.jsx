@@ -32,7 +32,9 @@ const ConditionalSidebar = () => {
     };
 
     const handleSidebarToggle = (event) => {
-      setSidebarCollapsed(event.detail?.collapsed || false);
+      setTimeout(() => {
+        setSidebarCollapsed(event.detail?.collapsed || false);
+      }, 0);
     };
 
     // Listen for storage changes (login/logout)
