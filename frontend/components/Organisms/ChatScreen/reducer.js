@@ -6,6 +6,8 @@ export const initialState = {
   isGenerating: false,
   isLoadingChat: false,
   isMultiline: false,
+  isEditing: false, // New state to track if user is editing a message
+  editingMessageId: null, // ID of the message being edited
   // flow
   messages: [
     {
@@ -39,11 +41,28 @@ export function reducer(state, action) {
       return { ...state, ...action.payload };
     case "SET_FIELD":
       return { ...state, [action.key]: action.value };
+    case "START_EDITING":
+      return { 
+        ...state, 
+        isEditing: true, 
+        editingMessageId: action.messageId,
+        input: action.messageText 
+      };
+    case "END_EDITING":
+      return { 
+        ...state, 
+        isEditing: false, 
+        editingMessageId: null 
+      };
     case "APPEND_MESSAGE":
+      // Prevent adding new messages while editing
+      if (state.isEditing) return state;
       return { ...state, messages: [...state.messages, action.message] };
     case "SET_MESSAGES":
       return { ...state, messages: action.messages };
     case "REPLACE_MESSAGE": {
+      // Prevent replacing messages while editing (unless it's the message being edited)
+      if (state.isEditing && action.id !== state.editingMessageId) return state;
       const next = state.messages.map((m) =>
         m.id === action.id ? action.message : m
       );

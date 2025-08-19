@@ -26,8 +26,8 @@ export const getInitialCustomOutline = (count) =>
 export const serializeMessages = (messages) =>
   messages.map((m) =>
     m.customType
-      ? { id: m.id, sender: m.sender, customType: m.customType, data: m.data }
-      : { id: m.id, sender: m.sender, text: m.text }
+      ? { id: m.id, sender: m.sender, customType: m.customType, data: m.data, step: m.step }
+      : { id: m.id, sender: m.sender, text: m.text, step: m.step }
   );
 
 

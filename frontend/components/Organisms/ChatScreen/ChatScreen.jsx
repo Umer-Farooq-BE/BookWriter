@@ -31,6 +31,10 @@ import {
   formatMessageText,
   getRequiredKeyPoints,
   serializeMessages,
+  getInitialKeyPoints,
+  getChapterRange,
+  generateId,
+  getInitialCustomOutline
 } from "./chatUtils";
 import { initialState, reducer } from "./reducer";
 import { useDebouncedPersistence } from "./hooks/useDebouncedPersistence";
