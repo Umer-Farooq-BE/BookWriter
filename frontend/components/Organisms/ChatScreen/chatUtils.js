@@ -1,6 +1,36 @@
 import React from "react";
 import { formatChapterText } from "../../../utils/format";
 
+export const generateId = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+export const REQUIRED_KEYPOINTS = {
+  Ebook: 8,
+  "Short Book": 16,
+  "Full Length Book": 20,
+};
+
+export const getRequiredKeyPoints = (bookType) => REQUIRED_KEYPOINTS[bookType] ?? 20;
+
+export const getChapterRange = (bookType) => {
+  if (bookType === "Ebook") return "4-6";
+  if (bookType === "Short Book") return "5-10";
+  return "10-12";
+};
+
+export  const getInitialKeyPoints = (bookType) =>
+  Array(Math.max(3, getRequiredKeyPoints(bookType))).fill("");
+
+export const getInitialCustomOutline = (count) =>
+  Array(count).fill({ title: "", concept: "" });
+
+export const serializeMessages = (messages) =>
+  messages.map((m) =>
+    m.customType
+      ? { id: m.id, sender: m.sender, customType: m.customType, data: m.data }
+      : { id: m.id, sender: m.sender, text: m.text }
+  );
+
+
 export const formatMessageText = (text, doubleSpace = false) => {
   if (!text || typeof text !== "string") return text;
 
