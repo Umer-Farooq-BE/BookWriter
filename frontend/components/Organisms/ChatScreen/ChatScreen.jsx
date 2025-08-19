@@ -11,12 +11,12 @@ import {
   loadChatState,
   saveChatState,
 } from "../../../utils/api";
-import MainChatInput from "./MainChatInput";
-import KeypointInputForm from "./KeypointInputForm";
-import ClearChatButton from "./ClearChatButton";
-import MessageList from "./MessageList";
-import BookTypeSelector from "./BookTypeSelector";
-import CustomOutlineForm from "./CustomOutlineForm";
+import MainChatInput from "../../Molecules/MainChatInput";
+import KeypointInputForm from "../../Molecules/KeypointInputForm";
+import ClearChatButton from "../../Atoms/ClearChatButton";
+import MessageList from "../../Molecules/MessageList";
+import BookTypeSelector from "../../Molecules/BookTypeSelector";
+import CustomOutlineForm from "../../Molecules/CustomOutlineForm";
 import {formatMessageText} from './chatUtils'
 
 const generateId = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
