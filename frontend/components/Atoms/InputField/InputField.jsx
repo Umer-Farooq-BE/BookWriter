@@ -1,31 +1,20 @@
-import './InputField.css';
+import * as React from 'react';
 
-const InputField = ({ label, type, name, register, errors, placeholder, value, onChange, id }) => {
-  const inputId = id || name;
-  const hasError = errors && name && errors[name];
+import { cn } from '@/libs/utils';
 
+const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (
-    <div className="input-field-container">
-      <label className="input-label" htmlFor={inputId}>
-        {label}
-      </label>
-      <input 
-        id={inputId}
-        type={type} 
-        name={name} 
-        placeholder={placeholder} 
-        // react-hook-form registration if provided
-        {...(register ? register(name) : {})}
-        // controlled props if provided
-        value={value !== undefined ? value : undefined}
-        onChange={onChange}
-        className={`input-field ${hasError ? 'input-error' : ''}`}
-      />
-      {hasError && (
-        <p className="error-message">{errors[name]?.message}</p>
+    <input
+      type={type}
+      className={cn(
+        'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+        className,
       )}
-    </div>
+      ref={ref}
+      {...props}
+    />
   );
-};
+});
+Input.displayName = 'Input';
 
-export default InputField;
+export default Input;
