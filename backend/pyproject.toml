@@ -5,7 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "bcrypt>=4.3.0",
     "fastapi>=0.116.1",
+    "langchain>=0.3.27",
+    "langchain-openai>=0.3.32",
+    "motor>=3.7.1",
+    "openai>=1.102.0",
+    "passlib>=1.7.4",
     "pydantic-settings>=2.10.1",
+    "pydantic[email]>=2.11.7",
+    "pymongo>=4.14.1",
+    "python-dotenv>=1.1.1",
+    "python-jose>=3.5.0",
     "uvicorn>=0.35.0",
 ]

@@ -1,119 +1,32 @@
-
-
-'use client';
-
-import { PrimaryButton } from "../../Atoms/Button";
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import PasswordField from "../../Atoms/PasswordField/PasswordField";
-import Input from "../../Atoms/InputField";
+import AuthFormSignUp from "@/Components/Molecules/AuthFormSignUp";
+import Link from "next/link";
 
 export default function SignupPage() {
-  const defaultValues = {
-    firstName: '',
-    lastName: '',
-    userName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  };
-  
-  const schema = z.object({
-    firstName: z.string().min(1, 'First name is required'),
-    lastName: z.string().min(1, 'Last name is required'),
-    userName: z.string().min(1, 'Username is required'),
-    email: z.string().email('Please enter a valid email'),
-    password: z.string()
-      .min(8, 'Password must be at least 8 characters long')
-      .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .regex(/[0-9]/, 'Password must contain at least one number')
-      .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character (!@#$%^&*)'),
-    confirmPassword: z.string().min(1, 'Please confirm your password')
-  }).refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
-
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: defaultValues,
-  });
-  
-  const onSubmit = data => {
-    console.log(data);
-  };
-
   return (
-    <div >
-      <div >
-        <div >
-          <h1 >Create Your Account</h1>
-          <p >Join Book Writer Pro and start your writing journey</p>
+    <div className="flex  my-4 md:mt-8 h-full  w-full items-start pt-12 md:pt-0 md:items-center justify-center bg-background ">
+      <div className="w-full max-w-md overflow-hidden rounded-2xl flex flex-col gap-12">
+        <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
+          <h3 className="text-xl font-semibold dark:text-zinc-50">
+            Sign Up with free trial
+          </h3>
+          <p className="text-sm text-gray-500 dark:text-zinc-400">
+            Empower your creativity with a free trial of our platform. Sign up
+            now to get started!
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div >
-            <Input
-              label="First Name *" 
-              type="text" 
-              name="firstName" 
-              register={register} 
-              errors={errors} 
-            />
-            <Input 
-              label="Last Name *" 
-              type="text" 
-              name="lastName" 
-              register={register} 
-              errors={errors} 
-            />
-          </div>
-          
-          <Input 
-            label="Username *" 
-            type="text" 
-            name="userName" 
-            register={register} 
-            errors={errors} 
-          />
-          
-          <Input 
-            label="Email *" 
-            type="email" 
-            name="email" 
-            register={register} 
-            errors={errors} 
-          />
-          
-          <PasswordField 
-            label="Password *" 
-            name="password" 
-            register={register} 
-            errors={errors} 
-          />
-
-          <PasswordField 
-            label="Confirm Password *" 
-            name="confirmPassword" 
-            register={register} 
-            errors={errors} 
-          />
-          
-          <PrimaryButton 
-            type="submit" 
-            className={styles?.submitButton}
-            fullWidth
+        <AuthFormSignUp />
+        <p className="text-center text-sm text-gray-600 dark:text-zinc-400">
+          {"Already have an account? "}
+          <Link
+            href="/login"
+            className="font-semibold text-gray-800 hover:underline dark:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
           >
-            Create Account
-          </PrimaryButton>
-        </form>
-
-        <div>
-          <p>Already have an account? <a href="/login">Sign in</a></p>
-        </div>
+            Sign in
+          </Link>
+          {" to continue."}
+        </p>
       </div>
     </div>
   );
-};
+}

@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bookwriterpro-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/src/app:/app/backend/src/app
+    environment:
+      - ENV=development
+    depends_on:
+      - mongo
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

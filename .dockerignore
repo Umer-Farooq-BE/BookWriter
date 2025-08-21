@@ -1,0 +1,62 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual Environments
+backend/.venv/
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter / IPython
+.ipynb_checkpoints
+*.ipynb
+
+# Test / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.pyre/
+
+# Logs
+*.log
+
+# ----------------------
+# FastAPI / Uvicorn
+# ----------------------
+*.pid
+*.sock
+
+# ----------------------
+# Environment variables
+# ----------------------
+.env
+*.env
+
+# ----------------------
+# VS Code / IDEs
+# ----------------------
+.vscode/
+.idea/
+*.swp
+
+# ----------------------
+# Docker
+# ----------------------
+Dockerfile
+docker-compose.yml
+.dockerignore
+**/.dockerignore
+
+# Docker volumes / artifacts
+*/.venv/
+*/__pycache__/
