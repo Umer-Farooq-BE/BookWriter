@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from 'next/script';
-import ConditionalHeader from '../../components/ConditionalHeader';
+import ConditionalHeader from '../../components/Organisms/ConditionalHeader/ConditionalHeader';
 
 import "./globals.css";
-import ConditionalSidebar from "../../components/ConditionalSidebar";
+import ConditionalSidebar from "../../components/Organisms/ConditionalSidebar/ConditionalSidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

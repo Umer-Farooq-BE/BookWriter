@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import Header from './Organisms/Header';
+import Header from '../Header';
 
 const ConditionalHeader = () => {
   const pathname = usePathname();

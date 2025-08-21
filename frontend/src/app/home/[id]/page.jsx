@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import ChatScreen from '../../../../components/ChatScreen';
+import ChatScreen from '../../../../components/Organisms/ChatScreen/ChatScreen';
 import { useParams } from 'next/navigation';
 
 export default function HomeBookPage() {
